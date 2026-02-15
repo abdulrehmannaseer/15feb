@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Engagement</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1000px;
+        }
+
+        .container h1 {
+            font-size: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300; /* Light/Thin style */
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        #timer {
+            font-size: 2rem;
+            font-weight: bold;
+            font-variant-numeric: tabular-nums; /* Keeps numbers from jumping around */
+        }
+
+        /* Mobile adjustment */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            #timer { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1><b>A</b>💍S</h1>
+        
+        <h2>Two souls, one promise — forever begins with you. ❤️</h2>
+
+        <div class="label">Together Since:</div>
+        <div id="timer">Loading...</div>
+    </div>
+
+    <script>
+        function updateTimer() {
+            // Start Date: February 15, 2026, 10:30 PM (22:30)
+            const startDate = new Date('2026-02-15T22:30:00');
+            const now = new Date();
+
+            // Calculate the difference in milliseconds
+            const diff = now - startDate;
+
+            if (diff >= 0) {
+                // Time calculations
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                // Display result
+                document.getElementById("timer").innerHTML = 
+                    days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            } else {
+                // Optional: If opened before the date
+                document.getElementById("timer").innerHTML = "The timer starts soon!";
+            }
+        }
+
+        // Update the count every 1 second
+        setInterval(updateTimer, 1000);
+        
+        // Run immediately so there is no delay on load
+        updateTimer();
+    </script>
+
+</body>
+</html>
