@@ -1,109 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Engagement</title>
-    <style>
-        body {
-            background-color: white;
-            color: black;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Engagement | A & S</title>
 
-        .container {
-            max-width: 1000px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-        .container h1 {
-            font-size: 30px;
-        }
+<style>
+:root {
+    /* New Romantic Palette */
+    --blush-pink: #ffdde1;
+    --lavender: #ee9ca7;
+    --soft-purple: #d4b5ff;
+    --rose-gold: #f7c6a3;
+    --gold-accent: #ffd700;
+    --glass-white: rgba(255, 255, 255, 0.18);
+}
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 400; /* Light/Thin style */
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
+body {
+    /* Dreamy gradient background */
+    background: linear-gradient(
+        135deg,
+        var(--blush-pink) 0%,
+        var(--lavender) 40%,
+        var(--soft-purple) 100%
+    );
+    color: #2d3436;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
 
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
+/* Glass Card */
+.glass-card {
+    background: var(--glass-white);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,0.35);
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.15),
+        inset 0 0 25px rgba(255,255,255,0.25);
+    padding: 55px 35px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
 
-        .label {
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            color: #333;
-        }
+/* Names */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin: 0;
+    color: white;
+    text-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
 
-        #timer {
-            font-size: 2rem;
-            font-weight: bold;
-            font-variant-numeric: tabular-nums; /* Keeps numbers from jumping around */
-        }
+/* Ring animation */
+.ring-icon {
+    font-size: 2.5rem;
+    display: inline-block;
+    animation: pulse 2s infinite;
+    filter: drop-shadow(0 0 8px gold);
+}
 
-        /* Mobile adjustment */
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            #timer { font-size: 1.5rem; }
-        }
-    </style>
+/* Quote */
+h2 {
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.3rem;
+    margin: 20px 0 40px;
+    color: rgba(255,255,255,0.95);
+}
+
+/* Label */
+.label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    color: #ffffffcc;
+    font-weight: 600;
+}
+
+/* Timer Box */
+#timer {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.25),
+        rgba(255,255,255,0.05)
+    );
+    padding: 18px 28px;
+    border-radius: 18px;
+    display: inline-block;
+    box-shadow:
+        inset 0 2px 6px rgba(0,0,0,0.08),
+        0 0 20px rgba(255,215,0,0.25);
+    letter-spacing: 1px;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    h1 { font-size: 2.4rem; }
+    #timer { font-size: 1.4rem; padding: 12px; }
+    h2 { font-size: 1rem; }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1><b>A</b>💍<b>S</b></h1>
-        
-        <h2>Two souls, one promise — forever begins with you. ❤️</h2>
+<div class="glass-card">
+    <h1>A <span class="ring-icon">💍</span> S</h1>
+    <h2>"Two souls, one promise — forever begins with you."</h2>
 
-        <div class="label">Together Since:</div>
-        <div id="timer">Loading...</div>
-    </div>
+    <div class="label">Together Since:</div>
+    <div id="timer">Counting...</div>
+</div>
 
-    <script>
-        function updateTimer() {
-            // Start Date: February 15, 2026, 10:30 PM (22:30)
-            const startDate = new Date('2026-02-15T22:30:00');
-            const now = new Date();
+<script>
+function updateTimer() {
+    const startDate = new Date('2026-02-15T22:30:00');
+    const now = new Date();
+    const diff = now - startDate;
 
-            // Calculate the difference in milliseconds
-            const diff = now - startDate;
+    if (diff >= 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            if (diff >= 0) {
-                // Time calculations
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        const h = hours < 10 ? '0' + hours : hours;
+        const m = minutes < 10 ? '0' + minutes : minutes;
+        const s = seconds < 10 ? '0' + seconds : seconds;
 
-                // Display result
-                document.getElementById("timer").innerHTML = 
-                    days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-            } else {
-                // Optional: If opened before the date
-                document.getElementById("timer").innerHTML = "The timer starts soon!";
-            }
-        }
+        document.getElementById("timer").innerHTML =
+            `<span>${days}d</span> : <span>${h}h</span> : <span>${m}m</span> : <span>${s}s</span>`;
+    } else {
+        document.getElementById("timer").innerHTML = "The journey begins soon!";
+    }
+}
 
-        // Update the count every 1 second
-        setInterval(updateTimer, 1000);
-        
-        // Run immediately so there is no delay on load
-        updateTimer();
-    </script>
+setInterval(updateTimer, 1000);
+updateTimer();
+</script>
 
 </body>
 </html>
